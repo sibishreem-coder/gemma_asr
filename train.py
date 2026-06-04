@@ -402,8 +402,8 @@ def main():
             weight_decay=0.01,
             lr_scheduler_type="cosine",
             warmup_ratio=0.05,
-            # optim="adamw_8bit",
-            optim="adamw_torch_fused",
+            optim="adamw_8bit",
+            # optim="adamw_torch_fused",
             # fp16=True,
             bf16=True,
             tf32=True,  
@@ -415,8 +415,11 @@ def main():
             eval_steps=200,
             save_strategy="steps",
             save_steps=200,
-            save_total_limit=5,
-            load_best_model_at_end=False,
+            save_total_limit=3,
+            # load_best_model_at_end=False,
+            load_best_model_at_end=True,
+            metric_for_best_model="eval_loss",
+            greater_is_better=False,
             max_length=MAX_SEQ_LENGTH,
             length_column_name="length",
             report_to="all",
@@ -429,6 +432,8 @@ def main():
     )
 
     trainer.train()
+    torch.cuda.empty_cache()
+    gc.collect()
     wandb.finish()
     print("✅ Training complete!")
 
