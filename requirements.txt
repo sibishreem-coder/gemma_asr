@@ -1,0 +1,17 @@
+torch>=2.2.0
+trl<0.9.0
+peft
+accelerate
+bitsandbytes
+datasets
+librosa
+soundfile
+wandb
+python-dotenv
+psutil
+tqdm
+sentencepiece
+unsloth_zoo
+jiwer
+huggingface_hub
+ 
