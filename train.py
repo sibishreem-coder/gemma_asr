@@ -366,6 +366,14 @@ def main():
         lora_alpha=LORA_ALPHA,
         lora_dropout=0.05,
         bias="none",
+        target_modules=[
+        "q_proj", "k_proj", "v_proj", "o_proj",
+        "gate_proj", "up_proj", "down_proj",
+        "post", "linear_start", "linear_end",
+        "embedding_projection",
+        "ffw_layer_1", "ffw_layer_2",
+        "output_proj",
+    ]
     )
 
     # ── Training ──────────────────────────────────────────────────────────────
